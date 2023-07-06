@@ -14,7 +14,7 @@ class ContactController extends Controller
     {
         //
         $contacts = new Contact;
-        $contacts = $contacts->get();
+        $contacts = $contacts->paginate(2);
         return view('contacts.index', compact('contacts'));
     }
 

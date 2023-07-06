@@ -21,4 +21,8 @@ Route::get('/', function () {
 Route::get('/about',[FrontendController::class, 'about']);
 Route::get('/create',[FrontendController::class, 'create']);
 
-Route::resource('contacts',contactcontroller::class);
+Route::resource('contacts',contactcontroller::class)->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
