@@ -45,6 +45,8 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->subject = $request->subject;
         $contact->save();
+
+        notify()->success('contact is awesome!');
         return redirect()->route('contacts.index');
     }
 
@@ -87,6 +89,8 @@ class ContactController extends Controller
         $contacts->subject = $request->subject;
         $contacts->message = $request->message;
         $contacts->update();
+
+        notify()->success('contact is updated!');
         return redirect()->route('contacts.index');
     }
 
@@ -98,6 +102,8 @@ class ContactController extends Controller
         $contacts = new Contact;
         $contacts = $contacts->where('id',$id)->first();
         $contacts->delete();
+
+        notify()->success('contact is deleted!');
         return redirect('contacts');
     }
 }
